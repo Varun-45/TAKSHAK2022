@@ -227,8 +227,8 @@ app.get("/sport", async (req, res) => {
        "Football",
        "Volleyball",
        "Basketball",
-       "Athletics 100m Race",
-       "Athletics 4x100m Relay Race",
+       "100m Race",
+       "4x100m Relay",
     ]
     const links = [
         "https://challonge.com/CricketTakshak2022",
