@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./icon.svg">
+    <title>Organizer Login Page</title>
+    <link rel="stylesheet" href="organizer.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="back-button">
+            <a href="/">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
+                    class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                </svg>
+            </a>
+        </div>
+        <div id="tsparticles"></div>
+        <div class="login-box">
+            <h2>Login</h2>
+            <form id="login-form">
+
+                <div class="user-box">
+                    <input type="password" name="password" required="true" id="pass">
+                    <label id="passlabel">Password</label>
+                </div>
+                <div class="bt">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <input type="submit" id="btn">
+                    <label></label>
+                </div>
+            </form>
+        </div>
+        <script src="organizer.js"></script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/x-icon" href="../icon.svg">
+  <title>Site In Progress</title>
+  <style>
+    body {
+      background: #000;
+    }
+
+    div {
+      color: gray;
+      font-family: Monaco, monospace;
+      font-size: 24px;
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      top: 45%;
+      left: 0;
+      animation: 120ms infinite normal glitch;
+    }
+
+    span {
+      animation: 1.5s infinite normal imleç;
+    }
+
+    ::-moz-selection {
+      background: #7021d2;
+      color: #fff;
+    }
+
+    ::selection {
+      background: #7021d2;
+      color: #fff;
+    }
+
+    @keyframes glitch {
+      0% {
+        opacity: 0;
+        left: 0;
+      }
+      40%,
+      80% {
+        opacity: 1;
+        left: -2px;
+      }
+    }
+
+    @keyframes imleç {
+      0% {
+        opacity: 0;
+        left: 0;
+      }
+      40% {
+        opacity: 0;
+        left: -2px;
+      }
+      80% {
+        opacity: 1;
+        left: -2px;
+      }
+    }
+      
+  </style>
+</head>
+
+<body>
+
+  <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+    <div id="yazı">█ █ █ <span style="color:black">█ █ █ █ █ █ █ █ █ █ </span>31%
+      <br>&gt; Site Under Progress&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <br>&gt; Photos Updating Soon  <span id="imleç">█</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,650 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../icon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <script src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>{{SPORT_NAME}} - Takshak'22</title>
+    <link rel="icon" type="image/x-icon" href="/static/icon.svg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow&family=Lato:wght@300;400;700;900&display=swap');
+
+        html,
+        body {
+            background-color: rgb(15, 15, 15);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            user-select: none;
+        }
+
+        @font-face {
+            font-family: BankGothic;
+            src: url('../fonts/BankGothic\ Bold.ttf');
+        }
+
+        #navbar-title, #footer, .dropdown-menu, .navbar-collapse, button span{
+            font-family: BankGothic, Barlow;
+        }
+
+        .container {
+            height: 70vh;
+        }
+
+        svg {
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        .nav {
+            background-color: rgb(15, 15, 15);
+        }
+
+
+        /***** Top menu *****/
+
+        .navbar {
+            background: rgb(15, 15, 15);
+            transition: all .6s;
+            backface-visibility: hidden;
+            box-shadow: 0 2px 5px 1px rgb(15, 15, 15)
+        }
+
+        .navbar-dark .navbar-nav {
+            font-size: 15px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+            color: rgba(255, 255, 255, 0.8);
+            border: 0;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #fff;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:focus {
+            color: #fff;
+            outline: 0;
+        }
+
+        .navbar-dark .navbar-toggler {
+            border-color: #444;
+        }
+
+        .navbar-dark .navbar-toggler:focus {
+            background: none;
+            outline: 0;
+        }
+
+        .navbar-dark .navbar-toggler span {
+            display: block;
+            width: 30px;
+            height: 2px;
+            margin: 6px auto;
+            background: #fff;
+            transition: all .6s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+        }
+
+        .navbar-dark .navbar-toggler:hover span,
+        .navbar-dark .navbar-toggler:focus span {
+            background: #ccc;
+        }
+
+        /* rotate first span */
+        .navbar-dark .navbar-toggler[aria-expanded="true"] span:first-of-type {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        /* hide second span */
+        .navbar-dark .navbar-toggler[aria-expanded="true"] span:nth-of-type(2) {
+            opacity: 0;
+        }
+
+        /* rotate third span */
+        .navbar-dark .navbar-toggler[aria-expanded="true"] span:last-of-type {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .navbar-dark .navbar-toggler[aria-expanded="false"] span {
+            transform: none;
+            opacity: 1;
+        }
+
+        .navbar-brand {
+            width: 162px;
+            height: 44px;
+            background: url(../img/logo.png) left center no-repeat;
+            border: 0;
+        }
+
+        .container-fluid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .navbar-dark .navbar-toggler span {
+            display: block;
+            width: 30px;
+            height: 2px;
+            margin: 6px auto;
+            background: #fff;
+            transition: all .6s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+        }
+
+        /* rotate first span */
+        .navbar-dark .navbar-toggler[aria-expanded="true"] span:first-of-type {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        /* hide second span */
+        .navbar-dark .navbar-toggler[aria-expanded="true"] span:nth-of-type(2) {
+            opacity: 0;
+        }
+
+        /* rotate third span */
+        .navbar-dark .navbar-toggler[aria-expanded="true"] span:last-of-type {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .navbar-dark .navbar-toggler[aria-expanded="false"] span {
+            transform: none;
+            opacity: 1;
+        }
+
+        footer {
+            width: 100%;
+            background-color: rgb(15, 15, 15);
+            text-align: center;
+            margin-top: auto;
+        }
+
+        footer p {
+            font-size: .8rem;
+            margin: 0;
+            text-align: center;
+            color: #fff;
+        }
+
+        .animated-icon1,
+        .animated-icon2,
+        .animated-icon3 {
+            width: 30px;
+            height: 20px;
+            position: relative;
+            margin: 0px;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: .5s ease-in-out;
+            -moz-transition: .5s ease-in-out;
+            -o-transition: .5s ease-in-out;
+            transition: .5s ease-in-out;
+            cursor: pointer;
+        }
+
+        .animated-icon1 span,
+        .animated-icon2 span,
+        .animated-icon3 span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: .25s ease-in-out;
+            -moz-transition: .25s ease-in-out;
+            -o-transition: .25s ease-in-out;
+            transition: .25s ease-in-out;
+        }
+
+        .animated-icon1 span {
+            background: #f3e5f5;
+        }
+
+        .animated-icon2 span {
+            background: #e3f2fd;
+        }
+
+        .animated-icon3 span {
+            background: #f3e5f5;
+        }
+
+        .animated-icon1 span:nth-child(1) {
+            top: 0px;
+        }
+
+        .animated-icon1 span:nth-child(2) {
+            top: 10px;
+        }
+
+        .animated-icon1 span:nth-child(3) {
+            top: 20px;
+        }
+
+        .animated-icon1.open span:nth-child(1) {
+            top: 11px;
+            -webkit-transform: rotate(135deg);
+            -moz-transform: rotate(135deg);
+            -o-transform: rotate(135deg);
+            transform: rotate(135deg);
+        }
+
+        .animated-icon1.open span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+
+        .animated-icon1.open span:nth-child(3) {
+            top: 11px;
+            -webkit-transform: rotate(-135deg);
+            -moz-transform: rotate(-135deg);
+            -o-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+        }
+
+        /* Icon 3*/
+
+        .animated-icon2 span:nth-child(1) {
+            top: 0px;
+        }
+
+        .animated-icon2 span:nth-child(2),
+        .animated-icon2 span:nth-child(3) {
+            top: 10px;
+        }
+
+        .animated-icon2 span:nth-child(4) {
+            top: 20px;
+        }
+
+        .animated-icon2.open span:nth-child(1) {
+            top: 11px;
+            width: 0%;
+            left: 50%;
+        }
+
+        .animated-icon2.open span:nth-child(2) {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .animated-icon2.open span:nth-child(3) {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+        .animated-icon2.open span:nth-child(4) {
+            top: 11px;
+            width: 0%;
+            left: 50%;
+        }
+
+        /* Icon 4 */
+
+        .animated-icon3 span:nth-child(1) {
+            top: 0px;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+        .animated-icon3 span:nth-child(2) {
+            top: 10px;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+        .animated-icon3 span:nth-child(3) {
+            top: 20px;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+        .animated-icon3.open span:nth-child(1) {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            top: 0px;
+            left: 8px;
+        }
+
+        .animated-icon3.open span:nth-child(2) {
+            width: 0%;
+            opacity: 0;
+        }
+
+        .animated-icon3.open span:nth-child(3) {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            top: 21px;
+            left: 8px;
+        }
+
+        .bnt:focus {
+            border-color: transparent;
+            box-shadow: 0 0 0 0.2rem rgb(15, 15, 15);
+        }
+
+        .logo {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        /* 
+        hr {
+            position: absolute;
+            margin: auto;
+            width: 50%;
+            color: #fff;
+        } */
+
+        a {
+            color: #fff;
+        }
+
+
+        body {
+            font-family: BankGothic, Barlow;
+        }
+
+        body .wrapper {
+            width: 80%;
+            padding: 50px 0px;
+            max-width: 500px;
+            font-size: 26px;
+            margin: 0px auto;
+            text-align: center;
+            color: white;
+        }
+
+        .FadeText span {
+            animation: FadeText 0.3s forwards;
+            opacity: 0.1;
+        }
+
+        @keyframes FadeText {
+            from {
+                opacity: 0.1;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .wrapper li {
+            font-size: 1.2rem;
+        }
+
+        .wrapper {
+            width: 100%;
+        }
+
+        button {
+            margin: 20px;
+            outline: none;
+        }
+
+        .custom-btn {
+            width: 130px;
+            height: 40px;
+            padding: 10px 25px;
+            border: 2px solid #000;
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .btn-12 {
+
+            position: relative;
+            right: 20px;
+            bottom: 20px;
+            border: none;
+            width: 130px;
+            height: 40px;
+            line-height: 40px;
+            -webkit-perspective: 230px;
+            perspective: 230px;
+        }
+
+        .btn-12 span {
+            background-color: #ffffff;
+            display: block;
+            position: absolute;
+            width: 130px;
+            height: 40px;
+            border: 2px solid #000;
+            margin: 0;
+            text-align: center;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: all .3s;
+            transition: all .3s;
+        }
+
+        .btn-12 span:nth-child(1) {
+            box-shadow:
+                -7px -7px 20px 0px #fff9,
+                -4px -4px 5px 0px #fff9,
+                7px 7px 20px 0px #0002,
+                4px 4px 5px 0px #0001;
+            -webkit-transform: rotateX(90deg);
+            -moz-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+            -webkit-transform-origin: 50% 50% -20px;
+            -moz-transform-origin: 50% 50% -20px;
+            transform-origin: 50% 50% -20px;
+        }
+
+        .btn-12 span:nth-child(2) {
+            -webkit-transform: rotateX(0deg);
+            -moz-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+            -webkit-transform-origin: 50% 50% -20px;
+            -moz-transform-origin: 50% 50% -20px;
+            transform-origin: 50% 50% -20px;
+        }
+
+        .btn-12:hover span:nth-child(1) {
+            -webkit-transform: rotateX(0deg);
+            -moz-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+        }
+
+        .btn-12:hover span:nth-child(2) {
+            background: #e0e5ec;
+            color: #e0e5ec;
+            -webkit-transform: rotateX(-90deg);
+            -moz-transform: rotateX(-90deg);
+            transform: rotateX(-90deg);
+        }
+
+        #sport-name {
+            font-size: 1.2rem;
+        }
+
+        .link2 {
+            color: black;
+            text-decoration: none;
+        }
+        .link2:hover {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg nav" style="background-color: #0f0f0f;">
+        <div class="container-fluid ">
+            <a class="navbar-brand " href="/" style="color: #fff;font-size: 1.5rem;" id="navbar-title">{{SPORT_NAME}} - Takshak'22</a>
+            <button class="navbar-toggler first-button bnt" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <div class="animated-icon1 bnt"><span></span><span></span><span></span></div>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff;">Sports</a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item" href="/sport?name=100m">100m Race</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/sport?name=4x100m">4x100m Relay Race</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/sport?name=badminton">Badminton</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/sport?name=basketball">Basketball</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/sport?name=chess">Chess</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/sport?name=cricket">Cricket</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/sport?name=football">Football</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/sport?name=table-tennis">Table Tennis</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/sport?name=throw-ball">Throw Ball</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/sport?name=tug-of-war">Tug of War</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/sport?name=volleyball">Volleyball</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/organizer" style="color:#fff;">Organiser</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/coming-soon" style="color: #fff;">Photos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/query" style="color: #fff;">Queries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about" style="color: #fff;">About</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="wrapper">
+        <p class="FadeText">
+            <b id="rules-title">Rules</b>
+            <hr>
+            {{RULES}}
+        </p>
+        <button class="custom-btn btn-12">
+            <span><a href="{{LINK}}" class="link2">Fixtures</a></span>
+            <span id="sport-name"><a href="{{LINK}}" class="link2">{{SPORT_NAME}}</a></span>
+        </button>
+    </div>
+
+   
+    <footer id="footer">
+        <p>© 2022 Copyright: <a href="https://www.linkedin.com/in/notryuk/"> Sreevallabh</a> || <a
+                href="https://www.linkedin.com/in/varun-malpani-aaa784233/">Varun</a>
+        </p>
+        <p>Powered By <img src="../IIITS_Mascot.png"
+            alt="MASCOT logo" class="logo"><a href="https://www.instagram.com/iiitsmascot/">IIITS Mascot</a></p>
+    </footer>
+    <script>
+        document.querySelector('.first-button').addEventListener('click', function () {
+            document.querySelector('.animated-icon1').classList.toggle('open');
+        });
+
+        // Class Selector
+        var $Texts = document.querySelectorAll(".FadeText");
+
+        // Global variables
+        $delayMultiplier = 0.03;
+
+        // Loop all Texts
+        for($i in $Texts){
+
+            // clear $conext
+            $htmlTag = false;
+            $content = "";
+
+            for($x in $Texts[$i].innerHTML){
+
+                delay = ($delayMultiplier * $x).toFixed(2);
+                char = ($Texts[$i].innerHTML.charAt($x));
+
+                // check if HTML tag opens
+                if(char == "<"){
+                    $htmlTag = true;
+                }
+
+                // Check Status of HTML Tag and fill wrapped char into Context    
+                if($htmlTag == false){
+                    $content += "<span style='animation-delay:"+delay+"s'>"+char+"</span>";
+                }else{
+                    $content += char;
+                }
+
+                // check if HTML tag closes
+                if(char == ">"){
+                    $htmlTag = false;
+                }
+            }
+
+            // Change Text into wrapped text
+            $Texts[$i].innerHTML = $content;
+        } 
+        
+        document.getElementsByClassName("btn-12").onclick = (e) => {
+            window.location.replace("{{LINK}}")
+        }
+    </script>
+</body>
+
+</html>

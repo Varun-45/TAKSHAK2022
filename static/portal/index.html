@@ -1,0 +1,85 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="../icon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Organizer Portal - Takshak'22</title>
+    <style>
+        @font-face {
+            font-family: BankGothic;
+            src: url('../fonts/BankGothic\ Bold.ttf');
+        }
+
+        h4 {
+            font-family: BankGothic, sans-serif;
+        }
+
+        .link-muted {
+            color: #aaa;
+        }
+
+        .link-muted:hover {
+            color: #1266f1;
+        }
+
+        body {
+            background-color: rgb(22, 22, 22);
+        }
+
+        html {
+            background-color: rgb(22, 22, 22);
+        }
+
+
+        .containner {
+            position: sticky;
+        }
+    </style>
+</head>
+
+<body>
+    <section style="background-color: rgb(22, 22, 22)">
+        <div class="container my-5 py-5 containner">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="card text-dark">
+                        <div class="card-body p-4">
+                            <h4 class="mb-0">Participant Queries</h4>
+                            <p class="fw-light mb-4 pb-2"></p>
+
+                            <div class="d-flex flex-start">
+                                <img class="rounded-circle shadow-1-strong me-3"
+                                    src="../IIITS_Mascot.png" alt="avatar"
+                                    width="60" height="60" />
+                                <div>
+                                    <h6 class="fw-bold mb-1">IIITS Mascot</h6>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <p class="mb-0">
+                                            June 11, 2022.
+
+                                        </p>
+                                        <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                                        <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
+                                        <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
+                                    </div>
+                                    <p class="mb-0">
+                                        This is the first post created by the developers in the testing phase of this website.
+                                        Good Luck to all the participants who are participating...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        {{QUERIES}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

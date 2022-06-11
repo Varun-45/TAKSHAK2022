@@ -1,0 +1,29 @@
+@font-face {
+    font-family: BankGothic;
+    src: url('../fonts/BankGothic\ Bold.ttf');
+}
+
+h4 {
+    font-family: BankGothic, sans-serif;
+}
+
+.link-muted {
+    color: #aaa;
+}
+
+.link-muted:hover {
+    color: #1266f1;
+}
+
+body {
+    background-color: rgb(22, 22, 22);
+}
+
+html {
+    background-color: rgb(22, 22, 22);
+}
+
+
+.containner {
+    position: sticky;
+}
