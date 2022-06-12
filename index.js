@@ -192,7 +192,8 @@ Details of matches will be updated on website.`
 const RULES = {
    "Cricket": CRICKET,
    "Chess": CHESS,
-   "Tug of War": TUG_OF_WAR,
+   "Tug of War - Male": TUG_OF_WAR,
+   "Tug of War - Female": TUG_OF_WAR,
    "Badminton - Male": BADMINTON_MALE,
    "Badminton - Female": BADMINTON_FEMALE,
    "Throw Ball": THROWBALL,
@@ -342,7 +343,8 @@ app.get("/sport", async (req, res) => {
     const sports = [
        "cricket", 
        "chess",
-       "tug-of-war",
+       "tug-of-war-m",
+       "tug-of-war-f",
        "badminton-m",
        "badminton-f",
        "throw-ball",
@@ -356,7 +358,8 @@ app.get("/sport", async (req, res) => {
     const IDS = [
        "Cricket",
        "Chess",
-       "Tug of War",
+       "ToW-Male",
+       "ToW-Female",
        "Badminton-M",
        "Badminton-F",
        "Throw Ball",
@@ -370,7 +373,8 @@ app.get("/sport", async (req, res) => {
     const links = [
         "https://challonge.com/CricketTakshak2022",
         "https://challonge.com/ChessTakshak2022",
-        "https://challonge.com/TugOfWarTakshak2022",
+        "https://challonge.com/TugOfWarTakshak2022M",
+        "https://challonge.com/TugOfWarTakshak2022F",
         "https://challonge.com/BadmintonTakshak2022M",
         "https://challonge.com/BadmintonTakshak2022F",
         "https://challonge.com/ThrowballTakshak2022",
