@@ -1,5 +1,5 @@
 import express from "express";
-import {DB_URL, PORT, TOKEN} from "./config.js";
+import {DB_URL, PORT} from "./config.js";
 import path from "path";
 import { fileURLToPath } from 'url';
 import fs from 'fs';
@@ -62,8 +62,8 @@ const CRICKET =
 Matches will be played of 8 overs and finals of 12 overs.
 Umpire Decision will be final
 Bowling Rules:
-  - For 8 overs match, all bowlers can bowl maximum of 2 overs.
-  - For 12 overs match, one bowler can bowl maximum of 4 overs, 2 bowlers can bowl maximum of 3 overs and rest 2 overs.
+  - For 8 overs match, all bowlers can bowl maximum of 2 overs, power play = 2 overs.
+  - For 12 overs match, two bowlers can bowl maximum of 3 overs, rest 2 overs, power play = 4 overs. 
 There will be run on wide and no ball (free hit will be given)
 Only Full arm bowling is allowed.
 Only team captain must fill the form.
@@ -148,7 +148,7 @@ In case team fails to gather 5 members the other team will be given bye.`
 
 const VOLLEYBALL = 
 `In case team fails to gather 6 members the other team will be given bye.
-Each match comprises of 3 set with 11 points each.@font
+Each match comprises of 3 set with 21 points each.
 Finals will be played of 3 set with 21 points each
 DRESS CODE - Sports Shoes + Shorts/Tracks. 
 Match Referee Decision will be final.
@@ -190,6 +190,124 @@ const RULES = {
    "Athletics 100m Race": ATHLETICS_100M,
    "Athletics 4x100m Relay Race": ATHLETICS_4_100M
 }
+
+const ATHLETICS_100M_TABLE = 
+`<p>Fixtures</p>
+<hr>
+<table class="table table-dark table-striped" style="text-align: center;">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Group A</th>
+            <th scope="col">Group B</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>HarshVardhan Gupta</td>
+            <td>TEJESWAR</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Dhavala Sandeep Kumar</td>
+            <td>Varun Ravi Malpani</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>G JITHENDRA KUMAR</td>
+            <td>Pavan kumar</td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>Gaurav Anand</td>
+            <td>Srawan Meesala</td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>PARTH BHANDARI</td>
+            <td>Pranav Gupta</td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<p>Finals</p>
+<hr>
+<table class="table table-dark table-striped" style="text-align: center;">
+    <thead>
+        <tr>
+            <th scope="col">Members</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1st from Group A</th>
+        </tr>
+        <tr>
+            <th scope="row">2nd from Group A</th>
+        </tr>
+        <tr>
+            <th scope="row">1st from Group B</th>
+        </tr>
+        <tr>
+            <th scope="row">2nd from Group B</th>
+        </tr>
+    </tbody>
+</table>`
+
+const ATHLETICS_4_100M_TABLE = 
+`<p>Fixtures</p>
+<hr>
+<table class="table table-dark table-striped" style="text-align: center;">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Group A</th>
+            <th scope="col">Group B</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Team Fab 4</td>
+            <td>Team Supersonics</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Team Flash</td>
+            <td>Team BBG</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>G JITHENDRA KUMAR</td>
+            <td>Team Jaguar</td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<p>Finals</p>
+<hr>
+<table class="table table-dark table-striped" style="text-align: center;">
+    <thead>
+        <tr>
+            <th scope="col">Members</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1st from Group A</th>
+        </tr>
+        <tr>
+            <th scope="row">2nd from Group A</th>
+        </tr>
+        <tr>
+            <th scope="row">1st from Group B</th>
+        </tr>
+        <tr>
+            <th scope="row">2nd from Group B</th>
+        </tr>
+    </tbody>
+</table>`
 
 
 app.use(express.static(__dirname+"/static"))
@@ -247,7 +365,11 @@ app.get("/sport", async (req, res) => {
         return
     }
     else {
-        var data = await _fs.readFile(path.join(__dirname, "static", "sports", "index.html"))
+        var file = "index.html"
+        if(["100m", "4x100m"].includes(sport_name)) {
+            file = "sports.html"
+        }
+        var data = await _fs.readFile(path.join(__dirname, "static", "sports", file))
         .then(data => data.toString())
         .catch(err => {
            res.sendFile(path.join(__dirname, "static", "404", "index.html"))
@@ -259,6 +381,12 @@ app.get("/sport", async (req, res) => {
         const rules = "\t\t\t\n"+Object.values(RULES)[index].split("\n").map(e => `<li>${e}</li>`).join("\t\t\t\n")
         data = data.replaceAll("{{SPORT_NAME}}", name)
         data = data.replaceAll("{{RULES}}", rules).replaceAll("{{LINK}}", links[index])
+        if(index === sports.length-1) {
+            data = data.replaceAll("{{TABLE}}", ATHLETICS_4_100M_TABLE)
+        }
+        if(index === sports.length-2) {
+            data = data.replaceAll("{{TABLE}}", ATHLETICS_100M_TABLE)
+        }
         await _fs.writeFile(path.join(__dirname, "static", "sports", "temp.html"), data.trim())
         .then(_res => {
            res.sendFile(path.join(__dirname, "static", "sports", "temp.html"))
@@ -289,7 +417,6 @@ app.get("/submit-query", async (req, res) => {
         console.log(query)
         await updateUserQuery(name, email, query)
     }
-    // res.sendFile(path.join(__dirname, "static", "query", "index.html"))
 })
 
 const TEMPLATE = 
@@ -347,5 +474,5 @@ app.get("*", (_, res) => {
 })
 
 app.listen(PORT, () => {
-   console.log("Hello from this port:", PORT)
+   console.log(`Using port:`, PORT)
 })
