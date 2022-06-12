@@ -210,8 +210,8 @@ const ATHLETICS_100M_TABLE =
         </tr>
         <tr>
             <th scope="row">2</th>
-            <td>Dhavala Sandeep Kumar</td>
             <td>Varun Ravi Malpani</td>
+            <td>Dhavala Sandeep Kumar</td>
         </tr>
         <tr>
             <th scope="row">3</th>
@@ -275,11 +275,11 @@ const ATHLETICS_4_100M_TABLE =
         <tr>
             <th scope="row">2</th>
             <td>Team Flash</td>
-            <td>Team BBG</td>
+            <td>Team Velocity</td>
         </tr>
         <tr>
             <th scope="row">3</th>
-            <td>G JITHENDRA KUMAR</td>
+            <td>Team BBG</td>
             <td>Team Jaguar</td>
         </tr>
     </tbody>
