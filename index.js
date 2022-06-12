@@ -87,7 +87,7 @@ Details of matches will be updated on website.
 In case team fails to gather 8 members the other team will be given bye.
 The total team weight is 560kg with an average player to be 70kg.`
 
-const BADMINTON =
+const BADMINTON_MALE =
 `DRESS CODE - Sports Shoes + Shorts/Tracks. 
 Match Referee Decision will be final.
 Only team captain must fill the form.
@@ -95,7 +95,19 @@ Team name must be parliamentary and non-vulgar.
 Join the WhatsApp group to know updates about schedule and fixtures.
 Details of matches will be updated on website.
 In case team fails to gather 2 members the other team will be given bye.
-There will be 3 rounds of 21 points each.`
+All matches except finals will be played in a 3 set match of 11 points each.
+Finals will be played in a 3 set match of 21 points each.`
+
+const BADMINTON_FEMALE =
+`DRESS CODE - Sports Shoes + Shorts/Tracks. 
+Match Referee Decision will be final.
+Only team captain must fill the form.
+Team name must be parliamentary and non-vulgar.
+Join the WhatsApp group to know updates about schedule and fixtures.
+Details of matches will be updated on website.
+In case team fails to gather 2 members the other team will be given bye.
+All matches except finals will be played in a 3 set match of 11 points each.
+Finals will be played in a 3 set match of 21 points each.`
 
 const THROWBALL = 
 `This sport is organized only for girls.
@@ -181,7 +193,8 @@ const RULES = {
    "Cricket": CRICKET,
    "Chess": CHESS,
    "Tug of War": TUG_OF_WAR,
-   "Badminton": BADMINTON,
+   "Badminton - Male": BADMINTON_MALE,
+   "Badminton - Female": BADMINTON_FEMALE,
    "Throw Ball": THROWBALL,
    "Table Tennis": TT,
    "Football": FOOTBALL,
@@ -321,12 +334,17 @@ app.get("/organizer", (_, res) => {
 })
 
 app.get("/sport", async (req, res) => {
-    const sport_name = req.query.name
+    var sport_name = req.query.name
+    const filter = req.query.filter
+    if(filter) {
+        sport_name += "-" + filter
+    }
     const sports = [
        "cricket", 
        "chess",
        "tug-of-war",
-       "badminton",
+       "badminton-m",
+       "badminton-f",
        "throw-ball",
        "table-tennis",
        "football", 
@@ -339,7 +357,8 @@ app.get("/sport", async (req, res) => {
        "Cricket",
        "Chess",
        "Tug of War",
-       "Badminton",
+       "Badminton-M",
+       "Badminton-F",
        "Throw Ball",
        "Table Tennis",
        "Football",
@@ -352,7 +371,8 @@ app.get("/sport", async (req, res) => {
         "https://challonge.com/CricketTakshak2022",
         "https://challonge.com/ChessTakshak2022",
         "https://challonge.com/TugOfWarTakshak2022",
-        "https://challonge.com/BadmintonTakshak2022",
+        "https://challonge.com/BadmintonTakshak2022M",
+        "https://challonge.com/BadmintonTakshak2022F",
         "https://challonge.com/ThrowballTakshak2022",
         "https://challonge.com/TableTennisTakshak2022",
         "https://challonge.com/FootballTakshak2022",
